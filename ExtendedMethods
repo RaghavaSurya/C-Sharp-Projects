@@ -1,0 +1,24 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		SomeOtherProgram prg=new SomeOtherProgram();
+		Console.WriteLine(prg.extendedMethod());
+	}
+}
+
+public class SomeOtherProgram
+{
+	public string getSomeData(){
+		return "Hello";
+	}
+}
+
+public static class SomeProgram2
+{
+	public static string extendedMethod(this SomeOtherProgram program){
+		return "HEllo from 2";
+	}
+}
