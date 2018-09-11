@@ -1,0 +1,76 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{	
+		
+		Employee emp1=new Employee();
+		
+		int employeeId= Convert.ToInt32(Console.ReadLine());
+		int employeeType= Convert.ToInt32(Console.ReadLine());
+		
+		EmployeeFactory fact=new EmployeeFactory();
+		IEmployeeManager emp=fact.GetEmployee(employeeType);
+		
+		emp1.EmployeeId=employeeId;
+		emp1.EmployeeId=employeeType;
+		emp1.bonus=emp.getBonus();
+		emp1.pay=emp.getPay();
+		
+		Console.WriteLine(emp1.bonus);					
+		
+	}
+}
+
+public class Employee
+{
+	public int EmpType;
+	public int EmployeeId;
+	public int bonus;
+	public int pay;
+}
+
+public class EmployeeFactory
+{
+	public IEmployeeManager GetEmployee(int employeeType){
+				
+		if(employeeType==1){
+			return new PermanentEmployeeManager();
+		}
+		else
+		{
+			return new ContractEmployeeManager();
+		}
+				
+	}
+}
+
+public interface IEmployeeManager
+{
+	int getBonus();
+	int getPay();
+}
+
+public class PermanentEmployeeManager : IEmployeeManager
+{
+	  public int getBonus(){
+	  	return 5;
+	  }
+	  
+	  public int getPay(){
+	  	return 20;
+	  }
+}
+
+public class ContractEmployeeManager : IEmployeeManager
+{
+	  public int getBonus(){
+	  	return 3;
+	  }
+	  
+	  public int getPay(){
+	  	return 10;
+	  }
+}
+
