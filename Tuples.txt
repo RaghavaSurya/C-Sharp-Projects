@@ -1,0 +1,24 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{	
+		
+			SomeOtherProgram prg=new SomeOtherProgram()					;
+			
+			Tuple<string,string> temp=prg.usingTupes();
+		
+			Console.WriteLine(temp.Item1);
+			Console.WriteLine(temp.Item2);
+		
+	}
+}
+
+public class SomeOtherProgram
+{
+	public Tuple<string,string> usingTupes()
+	{
+		return new Tuple<string,string>("Hello","Dude");
+	}
+}
